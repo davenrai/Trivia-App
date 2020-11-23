@@ -31,10 +31,10 @@ export default function QuestionScreen({ route, navigation }) {
 
     const setAnswer = (i) => {
         // change old answer background to white
-        setAnsOne('white')
-        setAnsTwo('white')
-        setAnsThree('white')
-        setAnsFour('white')
+        setAnsOne(WHITE)
+        setAnsTwo(WHITE)
+        setAnsThree(WHITE)
+        setAnsFour(WHITE)
         if (type === 'multiple') {
 
             setSelectedAnswer(i)
@@ -50,8 +50,8 @@ export default function QuestionScreen({ route, navigation }) {
             }
         }
         else {
-            setAnsOne('white')
-            setAnsTwo('white')
+            setAnsOne(WHITE)
+            setAnsTwo(WHITE)
             if (i === 'True' && correct === 'True') {
                 setAnsOne(GREEN)
             }
