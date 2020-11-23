@@ -6,11 +6,6 @@ import {colors} from "./utils/index"
 const { BLUE, ORANGE, GREEN, GREY } = colors
 
 export default function ListScreen({ navigation }) {
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 1cabf4a2ef116f9e3810bf79140d1d2d9ad83cde
     const [triviaQuestions, setTriviaQuestions] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
