@@ -6,6 +6,7 @@ import {colors} from "./utils/index"
 const { BLUE, ORANGE, GREEN, GREY } = colors
 
 export default function ListScreen({ navigation }) {
+    
     const [triviaQuestions, setTriviaQuestions] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -31,13 +32,24 @@ export default function ListScreen({ navigation }) {
 
     const cleanData = (type, text) => {
         if (type === 'correct' || type === 'question') {
-            return text.replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&ldquo;/g, '“').replace(/&rdquo;/g, '”').replace(/&eacute;/g, 'é').replace(/&deg;/g, '°')
+            return text
+                .replace(/&quot;/g, '"')
+                .replace(/&#039;/g, '\'')
+                .replace(/&ldquo;/g, '“')
+                .replace(/&rdquo;/g, '”')
+                .replace(/&eacute;/g, 'é')
+                .replace(/&deg;/g, '°')
         }
         else {
             for (let i; i < text.length; i++) {
-                text[i].replace(/&quot;/g, '"').replace(/&#039;/g, '\'').replace(/&ldquo;/g, '“').replace(/&rdquo;/g, '”').replace(/&eacute;/g, 'é').replace(/&deg;/g, '°')
+                text[i]
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#039;/g, '\'')
+                    .replace(/&ldquo;/g, '“')
+                    .replace(/&rdquo;/g, '”')
+                    .replace(/&eacute;/g, 'é')
+                    .replace(/&deg;/g, '°')
             }
-            console.log(text)
             return text
         }
 
@@ -113,7 +125,9 @@ export default function ListScreen({ navigation }) {
 
     else {
         return (
-            <View style={{ flex: 1, justifyContent: 'center' }}><ActivityIndicator size='large' color='#0000ff' /></View>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator size='large' color='#0000ff' />
+            </View>
         )
     }
 }

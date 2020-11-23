@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import {colors} from "./utils/index"
+import { colors } from "./utils/index"
 
-const { BLUE, ORANGE, GREEN } = colors
+const { BLUE, ORANGE, GREEN, WHITE } = colors
 
 export default function QuestionScreen({ route, navigation }) {
     const [selectedAnswer, setSelectedAnswer] = useState(null)
 
-    const [ansOne, setAnsOne] = useState('white')
-    const [ansTwo, setAnsTwo] = useState('white')
-    const [ansThree, setAnsThree] = useState('white')
-    const [ansFour, setAnsFour] = useState('white')
+    const [ansOne, setAnsOne] = useState(WHITE)
+    const [ansTwo, setAnsTwo] = useState(WHITE)
+    const [ansThree, setAnsThree] = useState(WHITE)
+    const [ansFour, setAnsFour] = useState(WHITE)
 
-    const { key, correct, incorrect, question, type } = route.params
+    const { correct, incorrect, question, type } = route.params
 
-    const allAnswers = correct + incorrect
     const indexPairs = { 0: setAnsOne, 1: setAnsTwo, 2: setAnsThree, 3: setAnsFour }
-
-
 
     function shuffleAnswers(array, correct) {
         if (!array.includes(correct) && type == 'multiple') {
@@ -79,28 +76,50 @@ export default function QuestionScreen({ route, navigation }) {
                 {type == 'multiple' ?
                     <View style={{ width: '100%', height: '40%', margin: 20, marginTop: 40, borderRadius: 15, }}>
                         <View style={styles.answerRow}>
-                            <TouchableOpacity style={[styles.answerBox, { backgroundColor: ansOne }]} onPress={(e) => setAnswer(0)}>
+                            <TouchableOpacity
+                                key={0}
+                                style={[styles.answerBox, { backgroundColor: ansOne }]}
+                                onPress={(e) => setAnswer(0)}
+                            >
                                 <Text style={styles.answerText}>{incorrect[0]}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity key={1} style={[styles.answerBox, { backgroundColor: ansTwo }]} onPress={(e) => setAnswer(1)}>
+                            <TouchableOpacity
+                                key={1}
+                                style={[styles.answerBox, { backgroundColor: ansTwo }]}
+                                onPress={(e) => setAnswer(1)}
+                            >
                                 <Text style={styles.answerText}>{incorrect[1]}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.answerRow}>
-                            <TouchableOpacity key={2} style={[styles.answerBox, { backgroundColor: ansThree }]} onPress={(e) => setAnswer(2)}>
+                            <TouchableOpacity 
+                                key={2} 
+                                style={[styles.answerBox, { backgroundColor: ansThree }]} 
+                                onPress={(e) => setAnswer(2)}
+                                >
                                 <Text style={styles.answerText}>{incorrect[2]}</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity key={3} style={[styles.answerBox, { backgroundColor: ansFour }]} onPress={(e) => setAnswer(3)}>
+                            <TouchableOpacity 
+                                key={3} 
+                                style={[styles.answerBox, { backgroundColor: ansFour }]} 
+                                onPress={(e) => setAnswer(3)}
+                                >
                                 <Text style={styles.answerText}>{incorrect[3]}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                     :
                     <View style={[styles.answerRow, { marginTop: 20 }]}>
-                        <TouchableOpacity style={[styles.answerBox, { backgroundColor: ansOne, height: '30%' }]} onPress={(e) => setAnswer('True')}>
+                        <TouchableOpacity
+                            style={[styles.answerBox, { backgroundColor: ansOne, height: '30%' }]}
+                            onPress={(e) => setAnswer('True')}
+                        >
                             <Text style={styles.answerText}>True</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.answerBox, { backgroundColor: ansTwo, height: '30%' }]} onPress={(e) => setAnswer('False')}>
+                        <TouchableOpacity
+                            style={[styles.answerBox, { backgroundColor: ansTwo, height: '30%' }]}
+                            onPress={(e) => setAnswer('False')}
+                        >
                             <Text style={styles.answerText}>False</Text>
                         </TouchableOpacity>
                     </View>
@@ -120,11 +139,11 @@ const styles = StyleSheet.create({
     },
     questionBox: {
         backgroundColor: 'white',
-         width: '100%', 
-         height: '20%', 
-         borderRadius: 15, 
-         justifyContent: 'center', 
-         padding: 5
+        width: '100%',
+        height: '20%',
+        borderRadius: 15,
+        justifyContent: 'center',
+        padding: 5
     },
     answerContainer: {
         margin: '15%',
@@ -143,7 +162,7 @@ const styles = StyleSheet.create({
         color: BLUE,
         fontSize: 20,
         textAlign: 'center',
-        
+
     },
     answerText: {
         fontSize: 15,
